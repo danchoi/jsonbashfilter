@@ -43,8 +43,8 @@ opts = O.info (O.helper <*> parseOpts)
           (O.fullDesc 
             <> O.progDesc [s|Filter JSON object fields through shell.
                     On STDIN provide an input stream of newline-separated JSON objects. |]
-            <> O.header "jsonbf"
-            <> O.footer "See https://github.com/danchoi/jsonbashfilter for more information.")
+            <> O.header "jsonextfilter"
+            <> O.footer "See https://github.com/danchoi/jsonextfilter for more information.")
 
 main = do
   Options preFilter filterProg expr debugKeyPaths <- O.execParser opts
