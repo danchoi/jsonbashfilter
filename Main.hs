@@ -61,12 +61,12 @@ main = do
      Prelude.putStrLn $ "Key Paths: " ++ show ks
      exitSuccess
   -- transform JSON
-  let bashFilter = io prog preFilter args
+  let bashFilter = io prog args preFilter 
   xs' <- mapM (runFilterOnPaths bashFilter ks') xs
   mapM_ (L8.putStrLn . encode) xs'
   
-io :: String -> Maybe String -> [String] -> Value -> IO Value
-io prog preFilter args v = 
+io :: String -> [String] -> Maybe String -> Value -> IO Value
+io prog args preFilter v = 
     case v of 
       String v' -> do
         go <- runPreFilter v'
